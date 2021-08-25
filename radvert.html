@@ -1,40 +1,49 @@
 <html>
 <head>
-<meta http-equiv="refresh" content="2; url=$(link-orig)">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />   
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="expires" content="-1">
-<title>Internet hotspot - Advertisement</title>
-<link rel="stylesheet" href="css/style.css">
-<script>
-
-    var popup = '';
-    function openOrig() {
-	if (window.focus) popup.focus();
-	location.href = unescape('$(link-orig-esc)');
-    }
-    function openAd() {
-	location.href = unescape('$(link-redirect-esc)');
-    }
-    function openAdvert() {
-	if (window.name != 'hotspot_advert') {
-		popup = open('$(link-redirect)', 'hotspot_advert', '');
-		setTimeout("openOrig()", 1000);
-		return;
-	}
-	setTimeout("openAd()", 1000);
-    }
-</script>
+    <title>DNE Zone | Advertisement</title>
+    <!--bootstrap css-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--theme css-->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <meta http-equiv="refresh" content="2; url=$(link-orig)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <script>
+        var popup = '';
+        function openOrig() {
+            if (window.focus) popup.focus();
+            location.href = unescape('$(link-orig-esc)');
+        }
+        function openAd() {
+            location.href = unescape('$(link-redirect-esc)');
+        }
+        function openAdvert() {
+            if (window.name != 'hotspot_advert') {
+                popup = open('$(link-redirect)', 'hotspot_advert', '');
+                setTimeout("openOrig()", 1000);
+                return;
+            }
+            setTimeout("openAd()", 1000);
+        }
+    </script>
 </head>
+
 <body onLoad="openAdvert()">
-    <div class="ie-fixMinHeight">
-        <div class="main">
-            <div class="wrap">
-                <h1>Advertisement</h1>
-                <p class="info">If nothing happens, open <a href="$(link-redirect)" target="hotspot_advert">advertisement</a> manually.</p>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+            <h1>Advertisement</h1>
+            <p class="info">If nothing happens, open <a href="$(link-redirect)" target="hotspot_advert">advertisement</a> manually.
+            </p>
             </div>
         </div>
     </div>
 </body>
+<script src="assets/js/jq.js"></script>
+<link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
 </html>
