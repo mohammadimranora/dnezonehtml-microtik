@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
+
+<head>
+    <meta charset="utf-8">
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="expires" content="-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,168 +12,125 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <!--theme css-->
     <link href="assets/css/style.css" rel="stylesheet" />
-  </head>
+</head>
 
-  <body>
-    <section class="container-fluid login-bg">
-      <div class="row">
+<body>
+<section class="container-fluid login-bg">
+    <div class="row">
         <!-- desktop screen only start -->
-        <div
-          class="
-            col-12 col-md-7 col-lg-8
-            justify-content-center
-            text-center
-            d-none d-md-block
-          "
-          style="
-            background: url(assets/img/login.svg) no-repeat;
-            height: 100vh;
-            background-position: center;
-            background-size: 65%;
-          "
-        >
-          <img src="assets/img/dennet-logo.png" class="login-logo" alt="" />
-          <div class="copyright-md">
-            &copy; 2021 DEN TECH. All right reserved.
-          </div>
+        <div class="col-12 col-md-7 col-lg-8 justify-content-center text-center d-none d-md-block"
+            style="background: url(assets/img/login.svg) no-repeat;height: 100vh;background-position: center;background-size: 65%;">
+            <img src="assets/img/dennet-logo.png" class="login-logo" alt="" />
+            <div class="copyright-md">
+                &copy; 2021 DEN TECH. All right reserved.
+            </div>
         </div>
         <!-- desktop screen only start -->
         <div class="col-12 col-md-5 col-lg-4 login-form signup shadow-lg p-5">
-          <!-- banner for mobile screen only start -->
-          <div class="mob-banner d-md-none">
-            <img src="assets/img/banner.jpg" alt="" />
-          </div>
-          <!-- banner for mobile screen only end -->
 
-          <!-- logo for mobile screen only end -->
-          <div class="mob-logo">
-            <img src="assets/img/logo.png" alt="" />
-          </div>
-          <!-- logo for mobile screen only end -->
+            <!-- banner for mobile screen only start -->
+            <div class="mob-banner d-md-none">
+                <img src="assets/img/banner.jpg" alt="" />
+            </div>
+            <!-- banner for mobile screen only end -->
 
-          <!-- form start -->
-          <!-- form start -->
-          $(if chap-id)
-          <form
-            name="sendin"
-            action="$(link-login-only)"
-            method="post"
-            style="display: none"
-          >
-            <input type="hidden" name="username" />
-            <input type="hidden" name="password" />
-            <input type="hidden" name="dst" value="$(link-orig)" />
-            <input type="hidden" name="popup" value="true" />
-          </form>
+            <!-- logo for mobile screen only end -->
+            <div class="mob-logo">
+                <img src="assets/img/logo.png" alt="" />
+            </div>
+            <!-- logo for mobile screen only end -->
 
-          <script src="/md5.js"></script>
-          <script>
-            function doLogin() {
-              document.sendin.username.value = document.login.username.value;
-              document.sendin.password.value = hexMD5(
-                "$(chap-id)" +
-                  document.login.password.value +
-                  "$(chap-challenge)"
-              );
-              document.sendin.submit();
-              return false;
-            }
-          </script>
-          $(endif)
+            <!-- form start -->
+            <!-- form start -->
+            $(if chap-id)
+            <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+                <input type="hidden" name="username" />
+                <input type="hidden" name="password" />
+                <input type="hidden" name="dst" value="$(link-orig)" />
+                <input type="hidden" name="popup" value="true" />
+            </form>
 
-          <!-- Register Section Form Start -->
+            <script src="/md5.js"></script>
+            <script>
+                function doLogin() {
+                    document.sendin.username.value = document.login.username.value;
+                    document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+                    document.sendin.submit();
+                    return false;
+                }
 
-          <form
-            name="redirect"
-            action="https://users-wifi.ayo.digital/redirect.html"
-            method="GET"
-          >
+            </script>
+            $(endif)
+
+            <!-- Register Section Form Start -->
+
+        <form name="redirect" action="https://users-wifi.ayo.digital/redirect.html" method="GET">
             <input type="hidden" name="mac" value="$(mac)" />
             <input type="hidden" name="ip" value="$(ip)" />
             <input type="hidden" name="link-login" value="$(link-login)" />
             <input type="hidden" name="link-orig" value="$(link-orig)" />
             <input type="hidden" name="router-ip" value="$(server-address)" />
             <input type="hidden" name="router-identity" value="$(identity)" />
-            <input
-              type="hidden"
-              name="router-server-name"
-              value="$(server-name)"
-            />
-          </form>
+            <input type="hidden" name="router-server-name" value="$(server-name)" />
+        </form>
 
-          <!-- Register Section Form End -->
+        <!-- Register Section Form End -->
 
-          <form
-            name="login"
-            action="$(link-login-only)"
-            method="post"
-            $(if
-            chap-id)
-            onSubmit="return doLogin()"
-            $(endif)
-          >
-            <input type="hidden" name="dst" value="$(link-orig)" />
-            <input type="hidden" name="popup" value="true" />
-
-            <p class="info $(if error)alert$(endif)">
-              $(if error == "")Please log in to use the internet hotspot service
-              $(if trial == 'yes')<br />Free trial available,
-              <a
-                href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)"
-                >click here</a
-              >.$(endif) $(endif) $(if error)$(error)$(endif)
-            </p>
-
+            <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                <input type="hidden" name="dst" value="$(link-orig)" />
+                <input type="hidden" name="popup" value="true" />
             
-            <h1>Log In</h1>
-            <p>
-              Nice to see you! Please log in with your account. 
-              <p>
-              If you are new to DNE Zone,
-              <a href="javascript:;" id="register">Register Here</a>
-            </p>
-            </p>
+                <p class="info $(if error)alert$(endif)">
+                    $(if error == "")Please log in to use the internet hotspot service $(if trial == 'yes')<br />Free trial
+                    available, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)
+                    $(endif)
+            
+                    $(if error)$(error)$(endif)
+                </p>
+                
+                <h1>Log In</h1>
+                <p class="mb-4">
+                    Nice to see you! Please log in with your account.
+                    <p>
+                        If you are new to DNE Zone,
+                        <a href="javascript:;" id="register">Register Here</a>
+                    </p>
+                </p>
+                
+                <div class="form-group mb-4">
+                    <span class="d-inline-block mb-1">Username</span>
+                    <input name="username" type="text" value="$(username)" placeholder="Username" class="form-control" />
+                </div>
+                <div class="form-group position-relative">
+                    <span class="d-inline-block mb-1">Password</span>
+                    <input name="password" type="password" placeholder="Password" class="form-control" />
+                
+                </div>
+                
+                <div class="form-group mt-4">
+                    <button type="submit">
+                        Connect
+                    </button>
+                </div>
+            
+            </form>
+            <!-- form end -->
 
-            <div class="form-group mb-4">
-              <span class="d-inline-block mb-1">Username</span>
-              <input
-                name="username"
-                type="text"
-                value="$(username)"
-                placeholder="Username"
-                class="form-control"
-              />
+            <!-- copyright for mobile screen only end -->
+            <div class="copyright d-md-none">
+                &copy; 2021 DEN TECH. All right reserved.
             </div>
-            <div class="form-group position-relative">
-              <span class="d-inline-block mb-1">Password</span>
-              <input
-                name="password"
-                type="password"
-                placeholder="Password"
-                class="form-control"
-              />
-            </div>
-
-            <div class="form-group mt-4">
-              <button type="submit">Connect</button>
-            </div>
-          </form>
-          <!-- form end -->
-
-          <!-- copyright for mobile screen only end -->
-          <div class="copyright d-md-none">
-            &copy; 2021 DEN TECH. All right reserved.
-          </div>
-          <!-- copyright for mobile screen only end -->
+            <!-- copyright for mobile screen only end -->
         </div>
-      </div>
-    </section>
-  </body>
-  <script src="assets/js/jq.js"></script>
-  <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-  <script src="assets/js/popper.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script>
+    </div>
+</section>
+
+</body>
+<script src="assets/js/jq.js"></script>
+<link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script>
     $("#register").click(function () {
       document.redirect.submit();
     });
