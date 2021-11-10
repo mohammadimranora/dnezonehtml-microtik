@@ -12,6 +12,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <!--theme css-->
     <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -84,7 +85,7 @@
                     $(if error == "")Please log in to use the internet hotspot service $(if trial == 'yes')<br />Free trial
                     available, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)
                     $(endif)
-            
+                    
                     $(if error)$(error)$(endif)
                 </p>
                 
@@ -130,9 +131,18 @@
 <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 <script src="assets/js/popper.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     $("#register").click(function () {
       document.redirect.submit();
+    });
+
+    $(document).ready(function(){
+        let regexRadiusError = /RADIUS server is not responding/i;
+        if($('p.info.alert').length >= 1  && regexRadiusError.test($('p.info.alert').text())){
+            toastr.info('You don\'t have active internet data pack, you are being redirected to dashboard');
+            document.location.href = 'https://users-wifi.ayo.digital/';
+        }
     });
   </script>
 </html>
