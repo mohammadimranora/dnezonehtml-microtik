@@ -65,7 +65,7 @@
 
             <!-- Register Section Form Start -->
 
-        <form name="redirect" action="https://users-wifi.ayo.digital/redirect.html" method="GET">
+        <form name="redirect" action="https://users.dne.zone/redirect.html" method="GET">
             <input type="hidden" name="mac" value="$(mac)" />
             <input type="hidden" name="ip" value="$(ip)" />
             <input type="hidden" name="link-login" value="$(link-login)" />
@@ -143,7 +143,7 @@
             $('p.info.alert').html('');
             toastr.info('You don\'t have active internet data pack, you are being redirected to dashboard');
             let timeHandle = setTimeout(function(){
-                document.location.href = 'https://users-wifi.ayo.digital/';
+                document.location.href = 'https://users.dne.zone/';
             },2000);
         }
     });
