@@ -20,10 +20,10 @@
     <div class="row">
         <!-- desktop screen only start -->
         <div class="col-12 col-md-7 col-lg-8 justify-content-center text-center d-none d-md-block"
-            style="background: url(assets/img/login.svg) no-repeat;height: 100vh;background-position: center;background-size: 65%;">
+            style="background: url(assets/img/desa-digital-user-page-2-min.jpg) no-repeat;height: 100vh;background-position: center;background-size: 100%;">
             <img src="assets/img/dennet-logo.png" class="login-logo" alt="" />
             <div class="copyright-md">
-                &copy; 2021 DEN TECH. All right reserved.
+                &copy; 2021 DNE NET. All rights reserved.
             </div>
         </div>
         <!-- desktop screen only start -->
@@ -82,35 +82,34 @@
                 <input type="hidden" name="popup" value="true" />
             
                 <p class="info $(if error)alert$(endif)">
-                    $(if error == "")Please log in to use the internet hotspot service $(if trial == 'yes')<br />Free trial
-                    available, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)
+                    $(if error == "")Silahkan masuk untuk menggunakan layanan WiFi internet DNE Zone $(if trial == 'yes')<br />Tersedia layanan Gratis 30 menit, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">Klik disini</a>.$(endif)
                     $(endif)
 
                     $(if error)$(error)$(endif)
                 </p>
                 
-                <h1>Log In</h1>
+                <h1>Masuk</h1>
                 <p class="mb-4">
-                    Nice to see you! Please log in with your account.
+                    Akses masuk dengan data kredensial yang Anda buat saat melakukan Registrasi
                     <p>
-                        If you are new to DNE Zone,
-                        <a href="javascript:;" id="register">Register Here</a>
+                        Jika Anda pengguna baru DNE Zone,
+                        <a href="javascript:;" id="register">Daftar Disini</a>
                     </p>
                 </p>
                 
                 <div class="form-group mb-4">
-                    <span class="d-inline-block mb-1">Username</span>
-                    <input name="username" type="text" value="$(username)" placeholder="Username" class="form-control" />
+                    <span class="d-inline-block mb-1">Alamat Email</span>
+                    <input name="username" type="text" value="$(username)" placeholder="Alamat Email" class="form-control" />
                 </div>
                 <div class="form-group position-relative">
-                    <span class="d-inline-block mb-1">Password</span>
-                    <input name="password" type="password" placeholder="Password" class="form-control" />
+                    <span class="d-inline-block mb-1">Kata sandi</span>
+                    <input name="password" type="password" placeholder="Kata sandi" class="form-control" />
                 
                 </div>
                 
                 <div class="form-group mt-4">
-                    <button type="submit">
-                        Connect
+                    <button type="submit" id="access">
+                        Mulai Akses Internet
                     </button>
                 </div>
             
@@ -119,7 +118,7 @@
 
             <!-- copyright for mobile screen only end -->
             <div class="copyright d-md-none">
-                &copy; 2021 DEN TECH. All right reserved.
+                &copy; 2021 DNE NET. All rights reserved.
             </div>
             <!-- copyright for mobile screen only end -->
         </div>
@@ -137,14 +136,31 @@
       document.redirect.submit();
     });
 
+    function getSearchParam(k) {
+        var p = {};
+        var search = decodeURIComponent(location.search);
+        search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(s, k, v) {
+            p[k] = v
+        })
+        return k ? p[k] : p;
+    }
+
     $(document).ready(function(){
         let regexRadiusError = /RADIUS server is not responding/i;
         if($('p.info.alert').length >= 1  && regexRadiusError.test($('p.info.alert').text())){
             $('p.info.alert').html('');
-            toastr.info('You don\'t have active internet data pack, you are being redirected to dashboard');
+            toastr.info('Anda tidak memiliki sesi paket internet yang aktif, Anda akan diarahkan ke dasbor');
             let timeHandle = setTimeout(function(){
                 document.location.href = 'https://users.dne.zone/';
             },2000);
+        }
+
+        if(window.location.search.length > 0){
+            let username = atob(getSearchParam('username'));
+            let pass = atob(getSearchParam('pass'));
+            $("input[name='username']").val(username);
+            $("input[name='password']").val(pass);
+            $('#access').trigger('click');
         }
     });
   </script>
