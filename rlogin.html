@@ -1,7 +1,7 @@
-$(if http-status == 302)Hotspot login required$(endif)
-$(if http-header == "Location")$(link-redirect)$(endif)
+$(if http-status == 302)Hotspot login required$(endif) $(if http-header ==
+"Location")$(link-redirect)$(endif)
 <html>
-<!--
+  <!--
 <?xml version="1.0" encoding="UTF-8"?>
   <WISPAccessGatewayParam
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -16,20 +16,21 @@ $(if http-header == "Location")$(link-redirect)$(endif)
     </Redirect>
   </WISPAccessGatewayParam>
 -->
-<head>
-  <title>DNE Zone | Redirect</title>
-  <!--bootstrap css-->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-  <!--theme css-->
-  <link href="assets/css/style.css" rel="stylesheet" />
-  <meta http-equiv="refresh" content="0; url=$(link-redirect)">
-  <meta http-equiv="pragma" content="no-cache">
-  <meta http-equiv="expires" content="-1">
-</head>
-<body>
-</body>
-<script src="assets/js/jq.js"></script>
-<link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-<script src="assets/js/popper.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+  <head>
+    <title>DNE Zone | Redirect</title>
+    <!--bootstrap css-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--theme css-->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <meta http-equiv="refresh" content="0; url=$(link-redirect)" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+  </head>
+  <body>
+    <script src="assets/js/twak.to.js"></script>
+  </body>
+  <script src="assets/js/jq.js"></script>
+  <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+  <script src="assets/js/popper.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
 </html>

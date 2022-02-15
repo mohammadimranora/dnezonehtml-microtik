@@ -1,20 +1,20 @@
-$(if http-status == 302)Hotspot redirect$(endif)
-$(if http-header == "Location")$(link-redirect)$(endif)
+$(if http-status == 302)Hotspot redirect$(endif) $(if http-header ==
+"Location")$(link-redirect)$(endif)
 <html>
-<head>
+  <head>
     <title>DNE Zone | Redirect</title>
     <!--bootstrap css-->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <!--theme css-->
     <link href="assets/css/style.css" rel="stylesheet" />
-    <meta http-equiv="refresh" content="0; url=$(link-redirect)">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="expires" content="-1">
-</head>
-<body>
-</body>
-<script src="assets/js/jq.js"></script>
-<link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-<script src="assets/js/popper.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+    <meta http-equiv="refresh" content="0; url=$(link-redirect)" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+  </head>
+  <script src="assets/js/twak.to.js"></script>
+  <body></body>
+  <script src="assets/js/jq.js"></script>
+  <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+  <script src="assets/js/popper.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
 </html>
