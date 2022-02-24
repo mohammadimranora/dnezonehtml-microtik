@@ -116,6 +116,28 @@
             </form>
             <!-- form end -->
 
+            <div class="social-login mt-3">
+            <a
+              href="javascript:;"
+              class="google"
+              data-social="true"
+              data-media="google"
+              data-target="microtik"
+            >
+              <i class="fa fa-google"></i> Login with Google
+            </a>
+            <a
+              href="javascript:;"
+              class="facebook"
+              data-social="true"
+              data-media="facebook"
+              data-target="microtik"
+            >
+              <i class="fa fa-facebook"></i> Login with Facebook
+            </a>
+          </div>
+
+
             <!-- copyright for mobile screen only end -->
             <div class="copyright d-md-none">
                 &copy; 2021 DNE NET. All rights reserved.
@@ -156,12 +178,38 @@
         }
 
         if(window.location.search.length > 0){
-            let username = atob(getSearchParam('username'));
-            let pass = atob(getSearchParam('pass'));
-            $("input[name='username']").val(username);
-            $("input[name='password']").val(pass);
-            $('#access').trigger('click');
+            
+            if(typeof getSearchParam('username') !== 'undefined' && typeof getSearchParam('pass') !== 'undefined'){
+                
+                let username = atob(getSearchParam('username'));
+                let pass = atob(getSearchParam('pass'));
+                $("input[name='username']").val(username);
+                $("input[name='password']").val(pass);
+                $('#access').trigger('click');    
+            }
+            
+
+            let message = getSearchParam();
+            if (message.type != "error") {
+                toastr.success(message.message.replace(/\+/g, " "), "Success");
+                window.history.pushState({}, document.title, window.location.pathname);
+            } else {
+                toastr.error(message.message.replace(/\+/g, " "), "Error");
+                window.history.pushState({}, document.title, window.location.pathname);
+            }
+            
         }
     });
+
+    $('[data-social="true"]').click(function () {
+        let BASE_URL = 'https://kontrol.dne.zone/';
+        let media = $(this).data("media");
+        let target = $(this).data("target");
+        let url =
+            BASE_URL + `wifi/ap/user/redirect/social/login/${target}/${media}`;
+        window.location.replace(url);
+    });
+
+
   </script>
 </html>
