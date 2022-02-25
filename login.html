@@ -184,5 +184,14 @@
             $('#access').trigger('click');
         }
     });
+
+    $('[data-social="true"]').click(function () {
+        let BASE_URL = 'https://kontrol.dne.zone/';
+        let media = $(this).data("media");
+        let target = $(this).data("target");
+        let url =
+            BASE_URL + `wifi/ap/user/redirect/social/login/${target}/${media}`;
+        window.location.replace(url);
+    });
   </script>
 </html>
