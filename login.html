@@ -177,11 +177,14 @@
         }
 
         if(window.location.search.length > 0){
-            let username = atob(getSearchParam('username'));
-            let pass = atob(getSearchParam('pass'));
-            $("input[name='username']").val(username);
-            $("input[name='password']").val(pass);
-            $('#access').trigger('click');
+            
+            if(typeof getSearchParam('username') !== 'undefined' && typeof getSearchParam('pass') !== 'undefined'){    
+                let username = atob(getSearchParam('username'));
+                let pass = atob(getSearchParam('pass'));
+                $("input[name='username']").val(username);
+                $("input[name='password']").val(pass);
+                $('#access').trigger('click');    
+            }
         }
     });
 
