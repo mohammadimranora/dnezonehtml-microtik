@@ -185,6 +185,15 @@
                 $("input[name='password']").val(pass);
                 $('#access').trigger('click');    
             }
+
+            let message = getSearchParam();
+            if (message.type != "error") {
+                toastr.success(message.message.replace(/\+/g, " "), "Success");
+                window.history.pushState({}, document.title, window.location.pathname);
+            } else {
+                toastr.error(message.message.replace(/\+/g, " "), "Error");
+                window.history.pushState({}, document.title, window.location.pathname);
+            }
         }
     });
 
