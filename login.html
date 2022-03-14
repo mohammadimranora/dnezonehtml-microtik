@@ -145,6 +145,7 @@
         </div>
     </div>
 </section>
+<div class="instructional-video-container"></div>
 
 </body>
 <script src="assets/js/jq.js"></script>
@@ -152,7 +153,9 @@
 <script src="assets/js/popper.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="assets/js/jq.cookie.min.js"></script>
 <script>
+    var BASE_URL = 'https://kontrol.dne.zone/';
     $("#register").click(function () {
       document.redirect.submit();
     });
@@ -198,7 +201,6 @@
     });
 
     $('[data-social="true"]').click(function () {
-        let BASE_URL = 'https://kontrol.dne.zone/';
         let media = $(this).data("media");
         let target = $(this).data("target");
         let url =
@@ -207,4 +209,13 @@
     });
   </script>
   <script src="assets/js/twak.js"></script>
+  <script>
+    (() => {
+      let url =
+        BASE_URL + "wifi/ap/user/get/instructional/video/popup/login-login-page";
+      $.get(url, (res) => {
+        $("body > .instructional-video-container").append(res);
+      });
+    })();
+  </script>
 </html>
