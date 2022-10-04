@@ -65,7 +65,7 @@
 
             <!-- Register Section Form Start -->
 
-        <form name="redirect" action="https://users.dne.zone/redirect.html" method="GET">
+        <form name="redirect" action="https://staging-users.dne.zone/redirect.html" method="GET">
             <input type="hidden" name="mac" value="$(mac)" />
             <input type="hidden" name="ip" value="$(ip)" />
             <input type="hidden" name="link-login" value="$(link-login)" />
@@ -175,7 +175,7 @@
             $('p.info.alert').html('');
             toastr.info('Anda tidak memiliki sesi paket internet yang aktif, Anda akan diarahkan ke dasbor');
             let timeHandle = setTimeout(function(){
-                document.location.href = 'https://users.dne.zone/';
+                document.location.href = 'https://staging-users.dne.zone/';
             },2000);
         }
 
